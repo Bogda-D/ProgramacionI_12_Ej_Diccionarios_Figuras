@@ -11,9 +11,22 @@ def inicio_programa():
                 print("¿Qué tipo de figura desea representar?")
                 que_figura = input("a. Círculo\nb. Rectángulo\nc. Triángulo\nd. Volver al menu anterior\nElija una opción: ")
                 match que_figura:
-                    case "a":
+                    case "a": #agregar diccionario de figuras
                         system("cls")
-                        figura = {}
+                        dimensiones = int(input("Ingrese el radio: "))
+                        color = seleccionar_color("Ingrese el color: ")
+                        posicion = int(input("Ingrese la posicion: "))
+                        #posicion_x = int(input("Ingrese la posicion x: "))
+                        #posicion_y = int(input("Ingrese la posicion y: "))
+                        #posiciones = (posicion_x, posicion_y) #tupla
+                        #dimenciones = calcular_area_circulo(radio)
+                        figura = {
+                            "tipo de figura": "circulo",
+                            "dimensiones": dimensiones,
+                            "posicion" : posicion,
+                            "color" : color
+                        }
+                        calcular_figura(figura, "ventana")
                     case "b":
                         system("cls")
                         figura = {}

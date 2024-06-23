@@ -2,7 +2,8 @@ import pygame
 from Funciones import *
 
 #region Colores
-
+VERDE = (7, 239, 119)
+AZUL_CLARO = (51, 153, 212)
 colores = {"Blanco" : (255,255,255),
            "Negro" : (0,0,0),
            "Rojo" : (255,0,0),
@@ -15,17 +16,24 @@ colores = {"Blanco" : (255,255,255),
 
 def seleccionar_color(mensaje):
     #Desplegar en pantalla todos los colores. El usuario deberá seleccionar uno.
-    color_retorno = None
-    return color_retorno
-    
+    for color in colores.keys():
+        print(color)
+
+    color_retorno = input(mensaje)
+    color_retorno = colores[color_retorno]
+
+    return color_retorno #tupla
+
 def calcular_figura(figura:dict, ventana):
     perimetro = None
     area = None
     que_figura = "None"
     
     match que_figura:
-        case "Circulo":
+        case "Circulo": 
             #COMPLETAR
+            area = calcular_area_circulo(figura["dimensiones"])
+            perimetro = calcular_perimetro_circulo(figura["dimensiones"])
             dibujar_circulo(ventana, figura)
         case "Rectangulo":
             #COMPLETAR
@@ -43,7 +51,7 @@ def graficar(figura):
 
     ventana_ppal = pygame.display.set_mode((1000,850))
     pygame.display.set_caption("FIGURAS")
-    imagen = pygame.image.load("matematica.jpg")
+    imagen = pygame.image.load("12_Ej_Diccionarios_Figuras\Ejercicio Para alumnos\matematica.jpg")
     imagen = pygame.transform.scale(imagen, (1000,850))
     ventana_ppal.blit(imagen,(0,0))
     calcular_figura(figura, ventana_ppal)
